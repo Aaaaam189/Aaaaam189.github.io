@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aya · Portfolio</title>
+<style>
+:root{
+  --accent:#8aa4ff; --accent2:#c58bff; --ink:#eef1ff; --muted:#9aa3c7;
+  --glass:rgba(24,28,52,.72); --line:rgba(255,255,255,.12); --paper:#12152b;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);user-select:none}
+body{
+  background:
+    radial-gradient(60vmax 60vmax at 15% 20%,rgba(138,164,255,.35),transparent 60%),
+    radial-gradient(55vmax 55vmax at 85% 75%,rgba(197,139,255,.30),transparent 60%),
+    radial-gradient(40vmax 40vmax at 70% 10%,rgba(80,220,200,.18),transparent 60%),
+    #0b0e1f;
+}
+/* menu bar */
+#menubar{position:fixed;inset:0 0 auto 0;height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:13px;background:rgba(10,12,28,.55);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);z-index:9999}
+#menubar b{letter-spacing:.3px}
+/* hero name on wallpaper */
+#hero{position:fixed;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none;padding:0 20px}
+#hero h1{font-size:clamp(56px,13vw,170px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(120deg,#fff,var(--accent) 45%,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.95}
+#hero p{margin-top:14px;font-size:clamp(14px,2vw,20px);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+#hero small{display:block;margin-top:26px;color:var(--muted);opacity:.7;font-size:13px}
+/* desktop icons */
+#icons{position:fixed;top:52px;left:18px;display:flex;flex-direction:column;gap:18px}
+.icon{width:104px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 4px;border-radius:12px;cursor:pointer;text-align:center;font-size:13px;line-height:1.25;border:1px solid transparent;background:none;color:inherit;font-family:inherit}
+.icon:hover,.icon:focus-visible{background:rgba(255,255,255,.08);border-color:var(--line);outline:none}
+.icon svg{width:62px;height:62px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4))}
+/* windows */
+.win{position:fixed;width:min(760px,92vw);height:min(520px,70vh);background:var(--glass);backdrop-filter:blur(22px);border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.55);display:flex;flex-direction:column;overflow:hidden;animation:pop .18s ease-out}
+.win.min{display:none}
+.win.max{inset:32px 0 64px 0!important;width:auto;height:auto;border-radius:0}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+.bar{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line);cursor:grab;touch-action:none}
+.dots{display:flex;gap:7px}
+.dots button{width:13px;height:13px;border-radius:50%;border:0;cursor:pointer}
+.dots .c{background:#ff5f57}.dots .m{background:#febc2e}.dots .x{background:#28c840}
+.back{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:3px 9px;cursor:pointer;font-size:13px}
+.back[hidden]{display:none}
+.title{margin-left:auto;margin-right:auto;font-size:13px;color:var(--muted);padding-right:60px}
+.body{flex:1;overflow:auto;padding:22px;user-select:text}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px}
+.file{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 6px;border-radius:12px;cursor:pointer;text-align:center;font-size:13px;border:1px solid transparent;background:none;color:inherit;font-family:inherit}
+.file:hover,.file:focus-visible{background:rgba(255,255,255,.08);border-color:var(--line);outline:none}
+.file svg{width:54px;height:66px}
+/* file detail */
+.doc h2{font-size:26px;letter-spacing:-.02em;margin-bottom:4px}
+.doc .meta{color:var(--muted);font-size:13px;margin-bottom:16px}
+.doc p,.doc li{line-height:1.65;color:#dfe4ff;margin-bottom:10px;font-size:15px}
+.doc ul{padding-left:20px;margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tags span{font-size:12px;padding:4px 10px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.06)}
+.pics{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:16px}
+.pics img,.ph{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--paper)}
+.ph{display:grid;place-items:center;text-align:center;padding:10px;font-size:12px;color:var(--muted);border-style:dashed}
+.btn{display:inline-block;margin-top:8px;padding:9px 16px;border-radius:10px;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#0b0e1f;font-weight:600;text-decoration:none;font-size:14px}
+/* dock */
+#dock{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:10px;padding:8px 12px;border-radius:18px;background:rgba(20,24,48,.6);backdrop-filter:blur(16px);border:1px solid var(--line);min-height:50px;min-width:50px;z-index:9998}
+#dock:empty{display:none}
+#dock button{border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--ink);padding:8px 14px;border-radius:12px;cursor:pointer;font-size:13px;font-family:inherit}
+#dock button.on{border-color:var(--accent)}
+@media (max-width:700px){
+  #icons{flex-direction:row;flex-wrap:wrap;width:calc(100% - 24px);left:12px;top:44px;gap:6px}
+  .icon{width:calc(50% - 6px)}
+  .win{inset:32px 0 64px 0!important;width:auto;height:auto;border-radius:0}
+  #hero{place-items:end center;padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+
+<div id="menubar"><b>◆ <span id="mbName"></span>'s Desktop</b><span id="clock"></span></div>
+<div id="hero"><div><h1 id="heroName"></h1><p id="heroTag"></p><small>Double-click a folder to open it</small></div></div>
+<div id="icons"></div>
+<div id="dock"></div>
+
+<script>
+/* ============ 1. EDIT YOUR CONTENT HERE ============ */
+const CONFIG = {
+  name: "Aya",
+  tagline: "Software Engineering Student · ENSIAS, Rabat",
+  email: "your.email@example.com",
+  linkedin: "https://www.linkedin.com/in/your-profile",
+  github: "https://github.com/your-username",
+  cv: "cv.pdf"                      // put your CV in the same folder
+};
+
+// Images go in an "images" folder. Missing images show a dashed placeholder telling you the file name.
+const FOLDERS = [
+  { id:"about", name:"About me", color:"#8aa4ff", files:[
+    { name:"Who am I", ext:"md", title:"Hi, I'm Aya 👋", meta:"Second-year engineering student · ENSIAS, Rabat",
+      body:`<p>I'm a software engineering student who likes building complete products: from the backend and the infrastructure to the interface, and, when a project calls for it, the AI model behind it.</p>
+            <p>I enjoy turning an idea into something that runs, is containerized, and can be deployed.</p>`,
+      images:["images/me.jpg"] },
+    { name:"Skills", ext:"md", title:"Skills", meta:"What I work with",
+      body:`<div class="tags"><span>Java</span><span>Spring Boot</span><span>Python</span><span>Go</span><span>React</span><span>PyTorch</span><span>PostgreSQL</span><span>Docker</span><span>RabbitMQ</span><span>GitHub Actions</span><span>AWS</span></div>
+            <p>Backend and microservices are my strongest area, and I'm comfortable across the full stack.</p>` },
+    { name:"Education", ext:"md", title:"Education", meta:"ENSIAS · Rabat, Morocco",
+      body:`<p>École Nationale Supérieure d'Informatique et d'Analyse des Systèmes (ENSIAS), engineering cycle, currently in second year.</p>`,
+      images:["images/ensias.jpg"] },
+    { name:"Certifications", ext:"md", title:"Certifications", meta:"",
+      body:`<ul><li><b>AWS Cloud Foundations</b></li></ul>` },
+    { name:"Languages", ext:"md", title:"Languages", meta:"",
+      body:`<ul><li>French</li><li>English</li></ul>` }
+  ]},
+  { id:"internships", name:"My internships", color:"#c58bff", files:[
+    { name:"SentinelAI", ext:"md", title:"SentinelAI", meta:"6-week internship · Intelligent physical security platform",
+      body:`<p>Designed and built a surveillance platform that detects and tracks people and vehicles on camera feeds and raises meaningful security incidents.</p>
+            <ul><li>Go microservices backend (seven services)</li><li>Python AI service: YOLO detection + ByteTrack tracking</li><li>React dashboard</li><li>RAG-based assistant service</li><li>MariaDB, RabbitMQ, Redis, JWT authentication, Docker Compose</li></ul>
+            <div class="tags"><span>Go</span><span>Python</span><span>YOLO</span><span>React</span><span>RabbitMQ</span><span>Docker</span></div>`,
+      images:["images/sentinel-1.png","images/sentinel-2.png","images/sentinel-3.png"] }
+    // Add more internships: copy the block above and paste it after a comma.
+  ]},
+  { id:"projects", name:"My projects", color:"#4fd8c4", files:[
+    { name:"DermAI · SkinSight", ext:"md", title:"DermAI · SkinSight", meta:"Multimodal skin lesion classification app",
+      body:`<p>An app that classifies skin lesions by combining the image with clinical data.</p>
+            <ul><li>PyTorch DenseNet121 fused with a clinical MLP, trained on ISIC 2019</li><li>Grad-CAM explanations to show what the model looks at</li><li>Flask + PostgreSQL + React stack, fully Dockerized</li><li>RSA-based commercial licensing system</li></ul>
+            <div class="tags"><span>PyTorch</span><span>Flask</span><span>React</span><span>PostgreSQL</span><span>Docker</span></div>`,
+      images:["images/dermai-1.png","images/dermai-2.png"] },
+    { name:"FoundersSync", ext:"md", title:"FoundersSync", meta:"Co-founder matching platform · microservices",
+      body:`<p>A "LinkedIn for startups" that helps founders find co-founders.</p>
+            <ul><li>Owned the Startup Service (Spring Boot, PostgreSQL, AWS S3, RabbitMQ)</li><li>Wrote the Dockerfiles for every service</li><li>Planned CI/CD with GitHub Actions, ArgoCD and Kubernetes on Oracle Cloud</li></ul>
+            <div class="tags"><span>Spring Boot</span><span>RabbitMQ</span><span>AWS S3</span><span>Kubernetes</span></div>`,
+      images:["images/founderssync-1.png"] },
+    { name:"SentinelAI", ext:"md", title:"SentinelAI", meta:"See the internship folder for the full story",
+      body:`<p>Intelligent physical security surveillance: Go microservices, YOLO + ByteTrack, React.</p>`,
+      images:["images/sentinel-1.png"] }
+  ]},
+  { id:"contacts", name:"Contacts", color:"#ffb86b", files:[
+    { name:"Email", ext:"mail", href:()=>"mailto:"+CONFIG.email },
+    { name:"LinkedIn", ext:"link", href:()=>CONFIG.linkedin },
+    { name:"GitHub", ext:"link", href:()=>CONFIG.github },
+    { name:"My CV", ext:"pdf", href:()=>CONFIG.cv }
+  ]}
+];
+/* ============ 2. ENGINE (no need to touch) ============ */
+const $ = (s,el=document)=>el.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+document.title = CONFIG.name + " · Portfolio";
+$("#mbName").textContent = CONFIG.name; $("#heroName").textContent = CONFIG.name; $("#heroTag").textContent = CONFIG.tagline;
+setInterval(tick,1000); tick();
+function tick(){ $("#clock").textContent = new Date().toLocaleString([], {weekday:"short",hour:"2-digit",minute:"2-digit"}); }
+
+const folderSVG = c => `<svg viewBox="0 0 64 64"><path d="M6 16a5 5 0 0 1 5-5h14l6 7h22a5 5 0 0 1 5 5v26a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5z" fill="${c}" opacity=".55"/><path d="M6 24a5 5 0 0 1 5-5h42a5 5 0 0 1 5 5v22a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5z" fill="${c}"/></svg>`;
+const fileSVG = (ext,c) => `<svg viewBox="0 0 54 66"><path d="M6 2h28l14 14v44a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z" fill="#1c2142" stroke="${c}" stroke-width="2"/><path d="M34 2v14h14" fill="${c}" opacity=".5"/><text x="27" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="${c}" font-family="sans-serif">.${ext}</text></svg>`;
+
+// desktop icons
+FOLDERS.forEach(f=>{
+  const b = document.createElement("button"); b.className="icon";
+  b.innerHTML = folderSVG(f.color)+`<span>${f.name}</span>`;
+  b.ondblclick = ()=>openFolder(f);
+  b.onkeydown = e=>{ if(e.key==="Enter") openFolder(f); };
+  if (matchMedia("(pointer:coarse)").matches) b.onclick = ()=>openFolder(f);
+  $("#icons").appendChild(b);
+});
+
+let z = 10, wins = {};
+function openFolder(f){
+  if (wins[f.id]) { restore(wins[f.id]); return; }
+  const w = document.createElement("div"); w.className="win";
+  const n = Object.keys(wins).length;
+  w.style.left = (210+n*34)+"px"; w.style.top = (70+n*34)+"px";
+  w.innerHTML = `<div class="bar"><div class="dots"><button class="c" title="Close"></button><button class="m" title="Minimize"></button><button class="x" title="Maximize"></button></div>
+    <button class="back" hidden>← Back</button><div class="title"></div></div><div class="body"></div>`;
+  document.body.appendChild(w);
+  const rec = {f, w, btn:null}; wins[f.id] = rec;
+  $(".c",w).onclick = ()=>{ w.remove(); rec.btn.remove(); delete wins[f.id]; };
+  $(".m",w).onclick = ()=>{ w.classList.add("min"); rec.btn.classList.remove("on"); };
+  $(".x",w).onclick = ()=>w.classList.toggle("max");
+  $(".back",w).onclick = ()=>showFolder(rec);
+  w.addEventListener("pointerdown",()=>w.style.zIndex=++z);
+  drag(w, $(".bar",w));
+  rec.btn = document.createElement("button"); rec.btn.textContent = f.name;
+  rec.btn.onclick = ()=> w.classList.contains("min") ? restore(rec) : (w.classList.add("min"), rec.btn.classList.remove("on"));
+  $("#dock").appendChild(rec.btn);
+  showFolder(rec); restore(rec);
+}
+function restore(rec){ rec.w.classList.remove("min"); rec.w.style.zIndex=++z; rec.btn.classList.add("on"); }
+
+function showFolder(rec){
+  const {f,w} = rec;
+  $(".title",w).textContent = "📁 "+f.name; $(".back",w).hidden = true;
+  const g = document.createElement("div"); g.className="grid";
+  f.files.forEach(file=>{
+    const b = document.createElement("button"); b.className="file";
+    b.innerHTML = fileSVG(file.ext,f.color)+`<span>${file.name}</span>`;
+    b.onclick = ()=> file.href ? window.open(file.href(),"_blank","noopener") : showFile(rec,file);
+    g.appendChild(b);
+  });
+  const body = $(".body",w); body.innerHTML=""; body.appendChild(g);
+}
+function showFile(rec,file){
+  const {f,w} = rec;
+  $(".title",w).textContent = f.name+" / "+file.name+"."+file.ext; $(".back",w).hidden = false;
+  const d = document.createElement("div"); d.className="doc";
+  d.innerHTML = `<h2>${file.title}</h2><div class="meta">${file.meta||""}</div>${file.body||""}`;
+  if (file.images?.length){
+    const p = document.createElement("div"); p.className="pics";
+    file.images.forEach(src=>{
+      const img = new Image(); img.src = src; img.alt = file.title; img.loading="lazy";
+      img.onerror = ()=>{ const ph=document.createElement("div"); ph.className="ph"; ph.textContent="Add your image: "+src; img.replaceWith(ph); };
+      p.appendChild(img);
+    });
+    d.appendChild(p);
+  }
+  const body = $(".body",w); body.innerHTML=""; body.appendChild(d); body.scrollTop=0;
+}
+function drag(w,h){
+  h.addEventListener("pointerdown",e=>{
+    if (e.target.closest("button") || w.classList.contains("max") || innerWidth<=700) return;
+    const dx=e.clientX-w.offsetLeft, dy=e.clientY-w.offsetTop; h.setPointerCapture(e.pointerId); h.style.cursor="grabbing";
+    const mv=ev=>{ w.style.left=Math.max(0,Math.min(innerWidth-120,ev.clientX-dx))+"px"; w.style.top=Math.max(32,Math.min(innerHeight-60,ev.clientY-dy))+"px"; };
+    const up=()=>{ h.removeEventListener("pointermove",mv); h.removeEventListener("pointerup",up); h.style.cursor="grab"; };
+    h.addEventListener("pointermove",mv); h.addEventListener("pointerup",up);
+  });
+}
+</script>
+</body>
+</html>
