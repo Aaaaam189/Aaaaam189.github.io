@@ -88,21 +88,18 @@ const CONFIG = {
   short: "Aya",
   tagline: "Junior Software Engineer · ENSIAS, Rabat",
   wallpaper: "images/wallpaper.jpg",   // put your background picture here (jpg/png/webp). If missing, the gradient is used.
-  email: "your.email@example.com",     // TODO
-  linkedin: "https://www.linkedin.com/in/aya-mlouki", // TODO: check this link
+  email: "mloukiaya4@gmail.com",     // TODO
+  linkedin: "https://ma.linkedin.com/in/aya-mlouki-45272932b", // TODO: check this link
   github: "https://github.com/Aaaaam189",
-  cvEn: "cv-en.pdf",                   // put both PDFs next to index.html
-  cvFr: "cv-fr.pdf"
+  cvEn: "CV_eng.pdf",                   // put both PDFs next to index.html
+  cvFr: "CV (2).pdf"
 };
-
-// Replace every REPO-NAME with the real repository name.
-const GH = "https://github.com/Aaaaam189/";
 
 const FOLDERS = [
   { id:"about", name:"About me", color:"#8aa4ff", files:[
-    { name:"Who am I", ext:"md", title:"Hi, I'm Aya Mlouki 👋", meta:"Junior Software Engineer · ENSIAS, Rabat",
+    { name:"Who am I", ext:"md", title:"Hi, I'm Aya Mlouki ", meta:"Junior Software Engineer · ENSIAS, Rabat",
       body:`<p>I'm a software engineering student at ENSIAS who likes building complete products: secure backends and microservices, clean React interfaces, containerized deployments and, when a project needs it, the AI model behind it.</p>
-            <p>Over the last year I've worked on an industrial project management platform, a multi-camera security system with real-time AI detection, a co-founder matching platform and a medical image classification app.</p>` },
+            <p>I'm mostly a full-stack engineer: I build backends and microservices, web interfaces and deployments, and I also use AI and data tools when a product needs them. I like understanding how every layer fits together, from the database to the screen.</p>` },
     { name:"Skills", ext:"md", title:"Skills", meta:"What I work with",
       body:`<h3>Backend</h3><div class="tags"><span>Java</span><span>Spring Boot</span><span>Spring Cloud</span><span>Spring Security</span><span>JPA / Hibernate</span><span>Go</span><span>Node.js</span><span>REST API</span><span>JWT / RBAC</span></div>
             <h3>Frontend</h3><div class="tags"><span>React.js</span><span>Next.js</span><span>TypeScript</span><span>Material UI</span></div>
@@ -125,13 +122,14 @@ const FOLDERS = [
             <li>Python AI pipeline with YOLOv8, BoTSORT and IoU-based person-weapon association</li>
             <li>MJPEG streaming integrated into the React.js / TypeScript front-end, orchestrated with Docker Compose</li></ul>
             <div class="tags"><span>Go</span><span>Microservices</span><span>RabbitMQ</span><span>JWT</span><span>RBAC</span><span>GORM</span><span>MariaDB</span><span>WebSocket</span><span>Python</span><span>YOLOv8</span><span>BoTSORT</span><span>React.js</span><span>TypeScript</span><span>Docker</span></div>`,
-      repo: GH+"REPO-NAME" },
+      repo:"https://github.com/Aaaaam189/An-Intelligent-Decision-Support-Platform-for-Physical-Security" },
     { name:"Dectronic", ext:"md", title:"Full-Stack Developer · Intern", meta:"Dectronic · Mohammedia, Morocco · July – August 2025 (2 months)",
       body:`<p><b>Project:</b> a web-based industrial project management platform.</p>
             <ul><li>Multi-role workflows, 7 milestones, validations, notifications and Kanban dashboards</li>
             <li>REST API with Spring Boot, Spring Security, JWT, RBAC, JPA/Hibernate, DTOs, Bean Validation, migrations and MySQL</li>
             <li>React.js front-end, containerized with Docker / Docker Compose for easier integration and deployment</li></ul>
-            <div class="tags"><span>Spring Boot</span><span>Spring Security</span><span>JWT</span><span>REST API</span><span>JPA</span><span>Hibernate</span><span>React.js</span><span>MySQL</span><span>Docker</span><span>RBAC</span></div>` }
+            <div class="tags"><span>Spring Boot</span><span>Spring Security</span><span>JWT</span><span>REST API</span><span>JPA</span><span>Hibernate</span><span>React.js</span><span>MySQL</span><span>Docker</span><span>RBAC</span></div>`,
+      repo:"https://github.com/Aaaaam189/Suivi-de-projet" }
   ]},
   { id:"projects", name:"My projects", color:"#4fd8c4", files:[
     { name:"FoundersSync", ext:"md", title:"FoundersSync", meta:"Co-founder matching platform · April – June 2026",
@@ -140,20 +138,20 @@ const FOLDERS = [
             <li>Next.js 14 / Material UI front-end with Socket.IO</li>
             <li>Deployed on AWS using Terraform and Docker Compose</li></ul>
             <div class="tags"><span>Java</span><span>Spring Boot</span><span>Spring Cloud</span><span>Node.js</span><span>Socket.IO</span><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>MongoDB</span><span>RabbitMQ</span><span>Docker</span><span>Terraform</span><span>AWS</span></div>`,
-      repo: GH+"REPO-NAME" },
+      repo:"https://github.com/ENSIAS-MEH/development-platform-owana_team" },
     { name:"DermAI", ext:"md", title:"DermAI", meta:"Intelligent skin lesion classification system · June 2026",
       body:`<p>An AI-powered web application that classifies skin lesions from dermoscopic images and clinical data.</p>
             <ul><li>Multimodal deep learning model: DenseNet121 for images and an MLP for clinical data, fused with PyTorch (trained on ISIC 2019)</li>
             <li>Integrated with Flask / React, with Grad-CAM for explainability and automated PDF report generation</li></ul>
             <div class="tags"><span>Python</span><span>PyTorch</span><span>Deep Learning</span><span>DenseNet121</span><span>MLP</span><span>Grad-CAM</span><span>Flask</span><span>React</span></div>`,
-      repo: GH+"REPO-NAME" },
+      repo:"https://github.com/Aaaaam189/Model-multimodal-pour-la-classification-des-l-sions-cutan-es" },
     { name:"BI Dashboard", ext:"md", title:"Business Intelligence Dashboard", meta:"Performance management · April 2026",
       body:`<p>A BI solution combining a data warehouse, ETL, interactive dashboards and machine learning for decision support.</p>
             <ul><li>Constellation-schema data warehouse on SQL Server with an ETL pipeline</li>
             <li>Power BI dashboards for KPI monitoring</li>
             <li>scikit-learn models for forecasting, anomaly detection, classification and segmentation, exposed through Flask</li></ul>
             <div class="tags"><span>SQL Server</span><span>Power BI</span><span>Python</span><span>Flask</span><span>scikit-learn</span></div>`,
-      repo: GH+"REPO-NAME" }
+      repo:"https://github.com/NadaMesbah/Superstore_BI" }
   ]},
   { id:"contacts", name:"Contacts", color:"#ffb86b", files:[
     { name:"Email", ext:"mail", href:()=>"mailto:"+CONFIG.email },
