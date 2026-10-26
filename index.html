@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Aya · Portfolio</title>
+<title>Aya Mlouki · Portfolio</title>
 <style>
 :root{
   --accent:#8aa4ff; --accent2:#c58bff; --ink:#eef1ff; --muted:#9aa3c7;
@@ -17,22 +17,23 @@ body{
     radial-gradient(55vmax 55vmax at 85% 75%,rgba(197,139,255,.30),transparent 60%),
     radial-gradient(40vmax 40vmax at 70% 10%,rgba(80,220,200,.18),transparent 60%),
     #0b0e1f;
+  background-size:cover;background-position:center;
 }
 /* menu bar */
 #menubar{position:fixed;inset:0 0 auto 0;height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:13px;background:rgba(10,12,28,.55);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);z-index:9999}
 #menubar b{letter-spacing:.3px}
 /* hero name on wallpaper */
 #hero{position:fixed;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none;padding:0 20px}
-#hero h1{font-size:clamp(56px,13vw,170px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(120deg,#fff,var(--accent) 45%,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.95}
-#hero p{margin-top:14px;font-size:clamp(14px,2vw,20px);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
-#hero small{display:block;margin-top:26px;color:var(--muted);opacity:.7;font-size:13px}
+#hero h1{font-size:clamp(44px,10vw,140px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(120deg,#fff,var(--accent) 45%,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 18px rgba(0,0,0,.55))}
+#hero p{margin-top:14px;font-size:clamp(14px,2vw,20px);color:#dfe4ff;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+#hero small{display:block;margin-top:26px;color:#dfe4ff;opacity:.75;font-size:13px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
 /* desktop icons */
 #icons{position:fixed;top:52px;left:18px;display:flex;flex-direction:column;gap:18px}
-.icon{width:104px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 4px;border-radius:12px;cursor:pointer;text-align:center;font-size:13px;line-height:1.25;border:1px solid transparent;background:none;color:inherit;font-family:inherit}
-.icon:hover,.icon:focus-visible{background:rgba(255,255,255,.08);border-color:var(--line);outline:none}
+.icon{width:104px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 4px;border-radius:12px;cursor:pointer;text-align:center;font-size:13px;line-height:1.25;border:1px solid transparent;background:none;color:inherit;font-family:inherit;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.icon:hover,.icon:focus-visible{background:rgba(255,255,255,.1);border-color:var(--line);outline:none}
 .icon svg{width:62px;height:62px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4))}
 /* windows */
-.win{position:fixed;width:min(760px,92vw);height:min(520px,70vh);background:var(--glass);backdrop-filter:blur(22px);border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.55);display:flex;flex-direction:column;overflow:hidden;animation:pop .18s ease-out}
+.win{position:fixed;width:min(780px,92vw);height:min(560px,72vh);background:var(--glass);backdrop-filter:blur(22px);border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.55);display:flex;flex-direction:column;overflow:hidden;animation:pop .18s ease-out}
 .win.min{display:none}
 .win.max{inset:32px 0 64px 0!important;width:auto;height:auto;border-radius:0}
 @keyframes pop{from{transform:scale(.94);opacity:0}}
@@ -53,7 +54,8 @@ body{
 .doc .meta{color:var(--muted);font-size:13px;margin-bottom:16px}
 .doc p,.doc li{line-height:1.65;color:#dfe4ff;margin-bottom:10px;font-size:15px}
 .doc ul{padding-left:20px;margin-bottom:12px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.doc h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:18px 0 8px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
 .tags span{font-size:12px;padding:4px 10px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.06)}
 .pics{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:16px}
 .pics img,.ph{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--paper)}
@@ -82,74 +84,102 @@ body{
 <script>
 /* ============ 1. EDIT YOUR CONTENT HERE ============ */
 const CONFIG = {
-  name: "Aya",
-  tagline: "Software Engineering Student · ENSIAS, Rabat",
-  email: "your.email@example.com",
-  linkedin: "https://www.linkedin.com/in/your-profile",
-  github: "https://github.com/your-username",
-  cv: "cv.pdf"                      // put your CV in the same folder
+  name: "Aya Mlouki",
+  short: "Aya",
+  tagline: "Junior Software Engineer · ENSIAS, Rabat",
+  wallpaper: "images/wallpaper.jpg",   // put your background picture here (jpg/png/webp). If missing, the gradient is used.
+  email: "your.email@example.com",     // TODO
+  linkedin: "https://www.linkedin.com/in/aya-mlouki", // TODO: check this link
+  github: "https://github.com/Aaaaam189",
+  cvEn: "cv-en.pdf",                   // put both PDFs next to index.html
+  cvFr: "cv-fr.pdf"
 };
 
-// Images go in an "images" folder. Missing images show a dashed placeholder telling you the file name.
+// Replace every REPO-NAME with the real repository name.
+const GH = "https://github.com/Aaaaam189/";
+
 const FOLDERS = [
   { id:"about", name:"About me", color:"#8aa4ff", files:[
-    { name:"Who am I", ext:"md", title:"Hi, I'm Aya 👋", meta:"Second-year engineering student · ENSIAS, Rabat",
-      body:`<p>I'm a software engineering student who likes building complete products: from the backend and the infrastructure to the interface, and, when a project calls for it, the AI model behind it.</p>
-            <p>I enjoy turning an idea into something that runs, is containerized, and can be deployed.</p>`,
-      images:["images/me.jpg"] },
+    { name:"Who am I", ext:"md", title:"Hi, I'm Aya Mlouki 👋", meta:"Junior Software Engineer · ENSIAS, Rabat",
+      body:`<p>I'm a software engineering student at ENSIAS who likes building complete products: secure backends and microservices, clean React interfaces, containerized deployments and, when a project needs it, the AI model behind it.</p>
+            <p>Over the last year I've worked on an industrial project management platform, a multi-camera security system with real-time AI detection, a co-founder matching platform and a medical image classification app.</p>` },
     { name:"Skills", ext:"md", title:"Skills", meta:"What I work with",
-      body:`<div class="tags"><span>Java</span><span>Spring Boot</span><span>Python</span><span>Go</span><span>React</span><span>PyTorch</span><span>PostgreSQL</span><span>Docker</span><span>RabbitMQ</span><span>GitHub Actions</span><span>AWS</span></div>
-            <p>Backend and microservices are my strongest area, and I'm comfortable across the full stack.</p>` },
-    { name:"Education", ext:"md", title:"Education", meta:"ENSIAS · Rabat, Morocco",
-      body:`<p>École Nationale Supérieure d'Informatique et d'Analyse des Systèmes (ENSIAS), engineering cycle, currently in second year.</p>`,
-      images:["images/ensias.jpg"] },
+      body:`<h3>Backend</h3><div class="tags"><span>Java</span><span>Spring Boot</span><span>Spring Cloud</span><span>Spring Security</span><span>JPA / Hibernate</span><span>Go</span><span>Node.js</span><span>REST API</span><span>JWT / RBAC</span></div>
+            <h3>Frontend</h3><div class="tags"><span>React.js</span><span>Next.js</span><span>TypeScript</span><span>Material UI</span></div>
+            <h3>AI & Data</h3><div class="tags"><span>Python</span><span>PyTorch</span><span>YOLOv8</span><span>scikit-learn</span><span>Flask</span><span>SQL Server</span><span>Power BI</span></div>
+            <h3>Data stores & messaging</h3><div class="tags"><span>PostgreSQL</span><span>MySQL</span><span>MariaDB</span><span>MongoDB</span><span>RabbitMQ</span><span>WebSocket</span></div>
+            <h3>DevOps & Cloud</h3><div class="tags"><span>Docker</span><span>Docker Compose</span><span>Terraform</span><span>AWS</span></div>` },
+    { name:"Education", ext:"md", title:"Education", meta:"2024 – Present · Rabat, Morocco",
+      body:`<p><b>ENSIAS</b> – École Nationale Supérieure d'Informatique et d'Analyse des Systèmes</p>
+            <p>State Engineering Degree in Software Engineering</p>` },
     { name:"Certifications", ext:"md", title:"Certifications", meta:"",
-      body:`<ul><li><b>AWS Cloud Foundations</b></li></ul>` },
+      body:`<ul><li><b>AWS Academy Graduate – Cloud Foundations</b> · December 2025</li><li><b>Cambridge English Certificate</b> · February 2021</li></ul>` },
     { name:"Languages", ext:"md", title:"Languages", meta:"",
-      body:`<ul><li>French</li><li>English</li></ul>` }
+      body:`<ul><li><b>English</b> – C1</li><li><b>French</b> – C1</li><li><b>Arabic</b> – Native</li></ul>` }
   ]},
   { id:"internships", name:"My internships", color:"#c58bff", files:[
-    { name:"SentinelAI", ext:"md", title:"SentinelAI", meta:"6-week internship · Intelligent physical security platform",
-      body:`<p>Designed and built a surveillance platform that detects and tracks people and vehicles on camera feeds and raises meaningful security incidents.</p>
-            <ul><li>Go microservices backend (seven services)</li><li>Python AI service: YOLO detection + ByteTrack tracking</li><li>React dashboard</li><li>RAG-based assistant service</li><li>MariaDB, RabbitMQ, Redis, JWT authentication, Docker Compose</li></ul>
-            <div class="tags"><span>Go</span><span>Python</span><span>YOLO</span><span>React</span><span>RabbitMQ</span><span>Docker</span></div>`,
-      images:["images/sentinel-1.png","images/sentinel-2.png","images/sentinel-3.png"] }
-    // Add more internships: copy the block above and paste it after a comma.
+    { name:"Digital Box", ext:"md", title:"Full-Stack & AI Developer · Intern", meta:"Digital Box Technologies · Rabat, Morocco · July – August 2026 (2 months)",
+      body:`<p><b>Project: SentinelAI</b>, a multi-camera physical security platform.</p>
+            <ul><li>Real-time detection, a rule engine, LOW-to-CRITICAL incidents and multi-role management</li>
+            <li>Go microservices with JWT, RBAC, GORM/MariaDB, RabbitMQ and WebSocket for asynchronous communication and real-time notifications</li>
+            <li>Python AI pipeline with YOLOv8, BoTSORT and IoU-based person-weapon association</li>
+            <li>MJPEG streaming integrated into the React.js / TypeScript front-end, orchestrated with Docker Compose</li></ul>
+            <div class="tags"><span>Go</span><span>Microservices</span><span>RabbitMQ</span><span>JWT</span><span>RBAC</span><span>GORM</span><span>MariaDB</span><span>WebSocket</span><span>Python</span><span>YOLOv8</span><span>BoTSORT</span><span>React.js</span><span>TypeScript</span><span>Docker</span></div>`,
+      repo: GH+"REPO-NAME" },
+    { name:"Dectronic", ext:"md", title:"Full-Stack Developer · Intern", meta:"Dectronic · Mohammedia, Morocco · July – August 2025 (2 months)",
+      body:`<p><b>Project:</b> a web-based industrial project management platform.</p>
+            <ul><li>Multi-role workflows, 7 milestones, validations, notifications and Kanban dashboards</li>
+            <li>REST API with Spring Boot, Spring Security, JWT, RBAC, JPA/Hibernate, DTOs, Bean Validation, migrations and MySQL</li>
+            <li>React.js front-end, containerized with Docker / Docker Compose for easier integration and deployment</li></ul>
+            <div class="tags"><span>Spring Boot</span><span>Spring Security</span><span>JWT</span><span>REST API</span><span>JPA</span><span>Hibernate</span><span>React.js</span><span>MySQL</span><span>Docker</span><span>RBAC</span></div>` }
   ]},
   { id:"projects", name:"My projects", color:"#4fd8c4", files:[
-    { name:"DermAI · SkinSight", ext:"md", title:"DermAI · SkinSight", meta:"Multimodal skin lesion classification app",
-      body:`<p>An app that classifies skin lesions by combining the image with clinical data.</p>
-            <ul><li>PyTorch DenseNet121 fused with a clinical MLP, trained on ISIC 2019</li><li>Grad-CAM explanations to show what the model looks at</li><li>Flask + PostgreSQL + React stack, fully Dockerized</li><li>RSA-based commercial licensing system</li></ul>
-            <div class="tags"><span>PyTorch</span><span>Flask</span><span>React</span><span>PostgreSQL</span><span>Docker</span></div>`,
-      images:["images/dermai-1.png","images/dermai-2.png"] },
-    { name:"FoundersSync", ext:"md", title:"FoundersSync", meta:"Co-founder matching platform · microservices",
-      body:`<p>A "LinkedIn for startups" that helps founders find co-founders.</p>
-            <ul><li>Owned the Startup Service (Spring Boot, PostgreSQL, AWS S3, RabbitMQ)</li><li>Wrote the Dockerfiles for every service</li><li>Planned CI/CD with GitHub Actions, ArgoCD and Kubernetes on Oracle Cloud</li></ul>
-            <div class="tags"><span>Spring Boot</span><span>RabbitMQ</span><span>AWS S3</span><span>Kubernetes</span></div>`,
-      images:["images/founderssync-1.png"] },
-    { name:"SentinelAI", ext:"md", title:"SentinelAI", meta:"See the internship folder for the full story",
-      body:`<p>Intelligent physical security surveillance: Go microservices, YOLO + ByteTrack, React.</p>`,
-      images:["images/sentinel-1.png"] }
+    { name:"FoundersSync", ext:"md", title:"FoundersSync", meta:"Co-founder matching platform · April – June 2026",
+      body:`<p>A collaborative platform to create virtual startups, find co-founders and work together through messaging, news feeds and real-time notifications.</p>
+            <ul><li>6 Spring Boot microservices with Spring Cloud, RabbitMQ, PostgreSQL / MongoDB and JWT / RBAC, with file storage on AWS S3</li>
+            <li>Next.js 14 / Material UI front-end with Socket.IO</li>
+            <li>Deployed on AWS using Terraform and Docker Compose</li></ul>
+            <div class="tags"><span>Java</span><span>Spring Boot</span><span>Spring Cloud</span><span>Node.js</span><span>Socket.IO</span><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>MongoDB</span><span>RabbitMQ</span><span>Docker</span><span>Terraform</span><span>AWS</span></div>`,
+      repo: GH+"REPO-NAME" },
+    { name:"DermAI", ext:"md", title:"DermAI", meta:"Intelligent skin lesion classification system · June 2026",
+      body:`<p>An AI-powered web application that classifies skin lesions from dermoscopic images and clinical data.</p>
+            <ul><li>Multimodal deep learning model: DenseNet121 for images and an MLP for clinical data, fused with PyTorch (trained on ISIC 2019)</li>
+            <li>Integrated with Flask / React, with Grad-CAM for explainability and automated PDF report generation</li></ul>
+            <div class="tags"><span>Python</span><span>PyTorch</span><span>Deep Learning</span><span>DenseNet121</span><span>MLP</span><span>Grad-CAM</span><span>Flask</span><span>React</span></div>`,
+      repo: GH+"REPO-NAME" },
+    { name:"BI Dashboard", ext:"md", title:"Business Intelligence Dashboard", meta:"Performance management · April 2026",
+      body:`<p>A BI solution combining a data warehouse, ETL, interactive dashboards and machine learning for decision support.</p>
+            <ul><li>Constellation-schema data warehouse on SQL Server with an ETL pipeline</li>
+            <li>Power BI dashboards for KPI monitoring</li>
+            <li>scikit-learn models for forecasting, anomaly detection, classification and segmentation, exposed through Flask</li></ul>
+            <div class="tags"><span>SQL Server</span><span>Power BI</span><span>Python</span><span>Flask</span><span>scikit-learn</span></div>`,
+      repo: GH+"REPO-NAME" }
   ]},
   { id:"contacts", name:"Contacts", color:"#ffb86b", files:[
     { name:"Email", ext:"mail", href:()=>"mailto:"+CONFIG.email },
     { name:"LinkedIn", ext:"link", href:()=>CONFIG.linkedin },
     { name:"GitHub", ext:"link", href:()=>CONFIG.github },
-    { name:"My CV", ext:"pdf", href:()=>CONFIG.cv }
+    { name:"CV (English)", ext:"pdf", href:()=>CONFIG.cvEn },
+    { name:"CV (Français)", ext:"pdf", href:()=>CONFIG.cvFr }
   ]}
 ];
 /* ============ 2. ENGINE (no need to touch) ============ */
 const $ = (s,el=document)=>el.querySelector(s);
-const NS = "http://www.w3.org/2000/svg";
 document.title = CONFIG.name + " · Portfolio";
-$("#mbName").textContent = CONFIG.name; $("#heroName").textContent = CONFIG.name; $("#heroTag").textContent = CONFIG.tagline;
+$("#mbName").textContent = CONFIG.short; $("#heroName").textContent = CONFIG.name; $("#heroTag").textContent = CONFIG.tagline;
 setInterval(tick,1000); tick();
 function tick(){ $("#clock").textContent = new Date().toLocaleString([], {weekday:"short",hour:"2-digit",minute:"2-digit"}); }
+
+// wallpaper: used only if the image exists, otherwise the gradient stays
+if (CONFIG.wallpaper){
+  const im = new Image();
+  im.onload = ()=>{ document.body.style.backgroundImage = `linear-gradient(rgba(8,10,25,.35),rgba(8,10,25,.55)),url("${CONFIG.wallpaper}")`; };
+  im.src = CONFIG.wallpaper;
+}
 
 const folderSVG = c => `<svg viewBox="0 0 64 64"><path d="M6 16a5 5 0 0 1 5-5h14l6 7h22a5 5 0 0 1 5 5v26a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5z" fill="${c}" opacity=".55"/><path d="M6 24a5 5 0 0 1 5-5h42a5 5 0 0 1 5 5v22a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5z" fill="${c}"/></svg>`;
 const fileSVG = (ext,c) => `<svg viewBox="0 0 54 66"><path d="M6 2h28l14 14v44a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z" fill="#1c2142" stroke="${c}" stroke-width="2"/><path d="M34 2v14h14" fill="${c}" opacity=".5"/><text x="27" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="${c}" font-family="sans-serif">.${ext}</text></svg>`;
 
-// desktop icons
 FOLDERS.forEach(f=>{
   const b = document.createElement("button"); b.className="icon";
   b.innerHTML = folderSVG(f.color)+`<span>${f.name}</span>`;
@@ -199,6 +229,10 @@ function showFile(rec,file){
   $(".title",w).textContent = f.name+" / "+file.name+"."+file.ext; $(".back",w).hidden = false;
   const d = document.createElement("div"); d.className="doc";
   d.innerHTML = `<h2>${file.title}</h2><div class="meta">${file.meta||""}</div>${file.body||""}`;
+  if (file.repo){
+    const a = document.createElement("a"); a.className="btn"; a.href=file.repo; a.target="_blank"; a.rel="noopener"; a.textContent="View on GitHub ↗";
+    d.appendChild(a);
+  }
   if (file.images?.length){
     const p = document.createElement("div"); p.className="pics";
     file.images.forEach(src=>{
